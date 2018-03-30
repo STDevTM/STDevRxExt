@@ -1,0 +1,23 @@
+PODS:
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.2)
+  - STDevRxExt (0.1.0):
+    - RxCocoa (~> 4.1.2)
+    - RxSwift (~> 4.1.2)
+
+DEPENDENCIES:
+  - STDevRxExt (from `../`)
+
+EXTERNAL SOURCES:
+  STDevRxExt:
+    :path: ../
+
+SPEC CHECKSUMS:
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
+  STDevRxExt: 3cccf414833af8373b1b0d01b9483518d4a225fd
+
+PODFILE CHECKSUM: f42840d4bfdb7c3c06cec77f4e686adfdc3604f1
+
+COCOAPODS: 1.3.1
