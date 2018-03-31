@@ -11,11 +11,11 @@ STDevRxExt contains following 3 type of extensions for RxSwift and RxCocoa:
 * more coming soon
                        DESC
 
-  s.homepage         = 'https://github.com/Tigran Hambardzumyan/STDevRxExt'
+  s.homepage         = 'https://github.com/stdevteam/STDevRxExt'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Tigran Hambardzumyan' => 'tigran@stdevmail.com' }
-  s.source           = { :git => 'https://github.com/Tigran Hambardzumyan/STDevRxExt.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/stdevteam/STDevRxExt.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.3'
