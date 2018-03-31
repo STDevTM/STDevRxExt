@@ -200,11 +200,11 @@ Tigran Hambardzumyan, tigran@stdevmail.com
 
 ## Support
 
-Feel free to [open issuses](https://github.com/yervandsar/SmoothTab/issues/new) with any suggestions, bug reports, feature requests, questions.
+Feel free to [open issuses](https://github.com/stdevteam/STDevRxExt/issues/new) with any suggestions, bug reports, feature requests, questions.
 
 ## Let us know!
 
-We’d be really happy if you sent us links to your projects where you use our component. Just send an email to yervandsar@gmail.com And do let us know if you have any questions or suggestion regarding the animation.
+We’d be really happy if you sent us links to your projects where you use our component. Just send an email to developer@stdevmail.com And do let us know if you have any questions or suggestion regarding the animation.
 
 ## License
 
