@@ -43,9 +43,9 @@ example("allowFalse") {
 
     let disposeBag = DisposeBag()
 
-    Driver.of(true, false, false, true, true)
+    Observable.of(true, false, false, true, false)
         .allowFalse()
-        .drive(onNext: { print($0) })
+        .subscribe(onNext: { print($0) })
         .disposed(by: disposeBag)
 
 }
@@ -64,9 +64,9 @@ example("allowFalse Optional") {
 example("allowTrueOrNil") {
     let disposeBag = DisposeBag()
 
-    Driver.of(true, false, nil, true, nil, true, false)
+    Observable.of(true, false, nil, true, nil, true, false)
         .allowTrueOrNil()
-        .drive(onNext: { print($0) })
+        .subscribe(onNext: { print($0) })
         .disposed(by: disposeBag)
 
 }
@@ -139,14 +139,9 @@ example("map(to:)") {
 
     let disposeBag = DisposeBag()
 
-    Observable.of(1,5,7,8)
+    Observable.of(1, 5, 7, 8)
         .map(to: "ping")
         .subscribe(onNext: { print($0) })
-        .disposed(by: disposeBag)
-
-    Driver.of(1,5,7,8)
-        .map(to: "ping")
-        .drive(onNext: { print($0) })
         .disposed(by: disposeBag)
 
 }
@@ -156,9 +151,9 @@ example("map(at:)") {
    let disposeBag = DisposeBag()
 
    let observable = Observable.of(
-            Book(title: "Book 1", author: Author("name", "lastName")),
-            Book(title: "Book 2", author: Author("name", "lastName")),
-            Book(title: "Book 3", author: Author("name", "lastName"))
+            Book(title: "Twenty Thousand Leagues Under the Sea", author: Author("Jules", "Verne")),
+            Book(title: "Hamlet", author: Author("William", "Shakespeare")),
+            Book(title: "Hearts of Three", author: Author("Jack", "London"))
         )
 
     observable
@@ -180,8 +175,8 @@ example("map(at:)") {
 example("cast(to:)") {
     let disposeBag = DisposeBag()
 
-    Observable.of("1", "5", "7", "8")
-        .cast(to: NSString.self)
+    Observable<CustomStringConvertible>.of("1", "5", "7", "8")
+        .cast(to: String.self)
         .subscribe(onNext: { print($0) })
         .disposed(by: disposeBag)
 
@@ -190,8 +185,8 @@ example("cast(to:)") {
 example("forceCast(to:)") {
     let disposeBag = DisposeBag()
 
-    Observable.of("1", "5", "7", "8")
-        .forceCast(to: NSString.self)
+    Observable<CustomStringConvertible>.of("1", "5", "7", "8")
+        .forceCast(to: String.self)
         .subscribe(onNext: { print($0) })
         .disposed(by: disposeBag)
 

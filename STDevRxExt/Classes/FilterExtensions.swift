@@ -72,23 +72,23 @@ public extension SharedSequenceConvertibleType where SharingStrategy == DriverSh
 public extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy, E == Bool? {
 
     public func allowTrue() -> Driver<Bool> {
-        return filter { $0 ?? false }
-            .map { $0! }
+        return map { $0 ?? false }
+            .allowTrue()
     }
 
     public func allowTrueOrNil() -> Driver<Bool> {
-        return filter { $0 ?? true }
-            .map { $0! }
+        return map { $0 ?? true }
+            .allowTrue()
     }
 
     public func allowFalse() -> Driver<Bool> {
-        return filter { !($0 ?? true) }
-            .map { $0! }
+        return map { $0 ?? true }
+            .allowFalse()
     }
 
     public func allowFalseOrNil() -> Driver<Bool> {
-        return filter { !($0 ?? false) }
-            .map { $0! }
+        return map { $0 ?? false }
+            .allowFalse()
     }
 
 }
