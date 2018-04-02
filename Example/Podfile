@@ -1,4 +1,7 @@
+platform :ios, '9.3'
+
 use_frameworks!
+
 target 'STDevRxExt_Tests' do
   pod 'STDevRxExt', :path => '../'
   

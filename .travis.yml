@@ -18,3 +18,8 @@ notifications:
       - developer@stdevmail.com
     on_success: never # default: change
     on_failure: always # default: always
+deploy:
+  provider: script
+  script: chmod +x scripts/push.sh && sh $TRAVIS_BUILD_DIR/scripts/push.sh
+  on:
+    tags: true
