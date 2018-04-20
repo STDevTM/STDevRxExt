@@ -57,6 +57,14 @@ public extension ObservableType {
 
 }
 
+public extension ObservableType where E == Optional<Any> {
+
+    public func allowNil() -> Observable<E> {
+        return filter { $0 == nil }
+    }
+
+}
+
 public extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy, E == Bool {
 
     public func allowTrue() -> Driver<Bool> {
