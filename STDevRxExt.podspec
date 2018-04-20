@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'STDevRxExt'
-  s.version          = '0.1.1'
+  s.version          = '0.1.2'
   s.summary          = 'STDevRxExt contains some extension functions for RxSwift and RxCoca which makes our live easy.'
 
   s.description      = <<-DESC
