@@ -23,7 +23,7 @@ example("allowTrue") {
 
     Observable.of(true, false, false, true, true)
         .allowTrue()
-        .subscribe(onNext: { print($0) })
+        .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
 
 }
@@ -34,7 +34,7 @@ example("allowTrue Optional") {
 
     Observable.of(true, false, nil, true, nil, true)
         .allowTrue()
-        .subscribe(onNext: { print($0) })
+        .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
 
 }
@@ -45,7 +45,7 @@ example("allowFalse") {
 
     Observable.of(true, false, false, true, false)
         .allowFalse()
-        .subscribe(onNext: { print($0) })
+        .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
 
 }
@@ -56,7 +56,7 @@ example("allowFalse Optional") {
 
     Observable.of(true, false, nil, true, nil, true, false)
         .allowFalse()
-        .subscribe(onNext: { print($0) })
+        .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
 
 }
@@ -66,7 +66,7 @@ example("allowTrueOrNil") {
 
     Observable.of(true, false, nil, true, nil, true, false)
         .allowTrueOrNil()
-        .subscribe(onNext: { print($0) })
+        .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
 
 }
@@ -76,9 +76,9 @@ example("allowFalseOrNil") {
 
     Observable.of(true, false, nil, true, nil, true, false)
         .allowFalseOrNil()
-        .subscribe(onNext: { print($0) })
+        .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
-    
+
 }
 
 example("filterIfNil") {
@@ -91,14 +91,14 @@ example("filterIfNil") {
 
     subject
         .filterIfNil(optional)
-        .subscribe(onNext: { print("Subscription1 --> \($0)") })
+        .subscribe(onNext: { dump($0, name: "Subscription1") })
         .disposed(by: disposeBag)
 
     optional = "enable"
 
     subject
         .filterIfNil(optional)
-        .subscribe(onNext: { print("Subscription2 --> \($0)") })
+        .subscribe(onNext: { dump($0, name: "Subscription2") })
         .disposed(by: disposeBag)
 
     subject.onNext("🐹")
@@ -116,14 +116,14 @@ example("filterIfNotNil") {
 
     subject
         .filterIfNotNil(optional)
-        .subscribe(onNext: { print("Subscription1 --> \($0)") })
+        .subscribe(onNext: { dump($0, name: "Subscription1") })
         .disposed(by: disposeBag)
 
     optional = "enable"
 
     subject
         .filterIfNotNil(optional)
-        .subscribe(onNext: { print("Subscription2 --> \($0)") })
+        .subscribe(onNext: { dump($0, name: "Subscription2") })
         .disposed(by: disposeBag)
 
     subject.onNext("🐹")
@@ -131,9 +131,18 @@ example("filterIfNotNil") {
     subject.onNext("🐭")
 }
 
+example("Allow nil") {
+    let disposeBag = DisposeBag()
+
+    Observable.of(true, false, nil, true, nil, true, false)
+        .allowNil()
+        .subscribe(onNext: { dump($0) })
+        .disposed(by: disposeBag)
+}
+
 /*:
  ## Map Extensions
- */
+*/
 
 example("map(to:)") {
 
@@ -141,7 +150,7 @@ example("map(to:)") {
 
     Observable.of(1, 5, 7, 8)
         .map(to: "ping")
-        .subscribe(onNext: { print($0) })
+        .subscribe(onNext: { dump($0 as String) })
         .disposed(by: disposeBag)
 
 }
@@ -158,26 +167,26 @@ example("map(at:)") {
 
     observable
         .map(at: \.title)
-        .subscribe(onNext: { print($0) })
+        .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
 
     observable
         .map(at: \.author.firstName)
-        .subscribe(onNext: { print($0) })
+        .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
 
 }
 
 /*:
  ## Cast Extensions
- */
+*/
 
 example("cast(to:)") {
     let disposeBag = DisposeBag()
 
     Observable<CustomStringConvertible>.of("1", "5", "7", "8")
         .cast(to: String.self)
-        .subscribe(onNext: { print($0) })
+        .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
 
 }
@@ -187,7 +196,7 @@ example("forceCast(to:)") {
 
     Observable<CustomStringConvertible>.of("1", "5", "7", "8")
         .forceCast(to: String.self)
-        .subscribe(onNext: { print($0) })
+        .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
 
 }
