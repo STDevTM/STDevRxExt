@@ -29,6 +29,7 @@ pod 'STDevRxExt'
 * [Filter Extensions](#filter-extensions)
 * [Map Extensions](#map-extensions)
 * [Cast Extensions](#cast_extensions)
+* [Other Extensions](#other_extensions)
 * _more coming soon_
 
 ### Filter Extensions
@@ -92,7 +93,7 @@ true
 true
 ```
 
-#### Map Extensions
+### Map Extensions
 
 You can map every element in sequence with provided value.
 
@@ -148,7 +149,7 @@ William
 Jack
 ```
 
-#### Cast Extensions
+### Cast Extensions
 
 You can do downcast elements in sequence using `cast(to:)`.
 
@@ -193,6 +194,42 @@ Output will be:
 In case of downcast exception it will return `Observable.error(RxCastError.castFailed)`.
 
 Allow extension functions can be used on `Driver` as well, except `forceCast(to:)`.
+
+### Other Extensions
+
+Sometimes we need to update some subject or observer on each `next` event of `Observable` or `Driver`. For example:
+
+```swift
+request
+    .do(onNext: { [weak self] _ in
+        self?.inProgress.onNext(true)
+    })
+    .flatMap {
+        service.doRequest($0)
+    }
+    .do(onNext: { [weak self] _ in
+        self?.inProgress.onNext(false)
+    })
+    .subscribe(onNext: { response in
+        dump(response)
+    })
+    .disposed(by: disposeBag)
+```
+
+You can use `update(_:with:)` method for shorting code like this:
+
+```swift
+request
+    .update(inProgress, with: true)
+    .flatMap {
+        service.doRequest($0)
+    }
+    .update(inProgress, with: false)
+    .subscribe(onNext: { response in
+        dump(response)
+    })
+    .disposed(by: disposeBag)
+```
 
 ## Author
 
