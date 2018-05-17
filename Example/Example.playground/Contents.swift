@@ -200,3 +200,24 @@ example("forceCast(to:)") {
         .disposed(by: disposeBag)
 
 }
+
+/*:
+ ## Other Extensions
+ */
+
+example("update(_:with:)") {
+    let disposeBag = DisposeBag()
+
+    let subject = PublishSubject<Bool>()
+
+    subject
+        .subscribe(onNext: { dump($0) })
+        .disposed(by: disposeBag)
+
+    Observable<String>.of("1", "5", "7", "8")
+        .update(subject, with: true)
+        .subscribe(onNext: { dump($0) })
+        .disposed(by: disposeBag)
+
+
+}

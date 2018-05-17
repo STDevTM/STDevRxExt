@@ -2,7 +2,7 @@ PODS:
   - RxCocoa (4.1.2):
     - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
-  - STDevRxExt (0.1.1):
+  - STDevRxExt (0.1.2):
     - RxCocoa (~> 4.1.2)
     - RxSwift (~> 4.1.2)
 
@@ -16,7 +16,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
-  STDevRxExt: db625d87a2f2f74ce2f9efb869b020e944781851
+  STDevRxExt: d8ba812104f9cebe6aee0250536f3cd8d62d040f
 
 PODFILE CHECKSUM: 03f0d9ab6a3ddca86ac78ea53d2cfc1bef03c8f8
 
