@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'STDevRxExt'
-  s.version          = '0.1.3'
+  s.version          = '0.1.4'
   s.summary          = 'STDevRxExt contains some extension functions for RxSwift and RxCoca which makes our live easy.'
 
   s.description      = <<-DESC
@@ -22,6 +22,6 @@ STDevRxExt contains following 3 type of extensions for RxSwift and RxCocoa:
 
   s.source_files = 'STDevRxExt/Classes/**/*'
 
-  s.dependency 'RxSwift', '~> 4.1.2'
-  s.dependency 'RxCocoa', '~> 4.1.2'
+  s.dependency 'RxSwift', '~> 4'
+  s.dependency 'RxCocoa', '~> 4'
 end
