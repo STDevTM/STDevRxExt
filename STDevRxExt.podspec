@@ -22,6 +22,6 @@ STDevRxExt contains following 3 type of extensions for RxSwift and RxCocoa:
 
   s.source_files = 'STDevRxExt/Classes/**/*'
 
-  s.dependency 'RxSwift', '~> 4.1.2'
-  s.dependency 'RxCocoa', '~> 4.1.2'
+  s.dependency 'RxSwift', '~> 4'
+  s.dependency 'RxCocoa', '~> 4'
 end
