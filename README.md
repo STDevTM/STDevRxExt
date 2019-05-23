@@ -13,7 +13,7 @@ To run the [Example.playground](Example/Example.playground), clone the repo, and
 
 * iOS 11.2+
 * Swift 5.0+
-* Xcode 10.2+
+* Xcode 10.0+
 
 ## Installation
 

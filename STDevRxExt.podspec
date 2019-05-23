@@ -19,7 +19,7 @@ STDevRxExt contains following 3 type of extensions for RxSwift and RxCocoa:
   s.source           = { :git => 'https://github.com/stdevteam/STDevRxExt.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '11.2'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'STDevRxExt/Classes/**/*'
 
