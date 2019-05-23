@@ -11,7 +11,7 @@ import RxCocoa
 
 public extension ObservableType {
 
-    public func update<T: ObserverType>(_ observer: T, with value: T.E) -> Observable<Self.E> {
+    func update<T: ObserverType>(_ observer: T, with value: T.Element) -> Observable<Self.Element> {
         return self.do(onNext: { [observer] _ in
             observer.onNext(value)
         })
@@ -21,7 +21,7 @@ public extension ObservableType {
 
 public extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy {
 
-    public func update<T: ObserverType>(_ observer: T, with value: T.E) -> SharedSequence<DriverSharingStrategy, Self.E> {
+    func update<T: ObserverType>(_ observer: T, with value: T.Element) -> SharedSequence<DriverSharingStrategy, Self.Element> {
         return self.do(onNext: { [observer] _ in
             observer.onNext(value)
         })

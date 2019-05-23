@@ -1,7 +1,8 @@
 Pod::Spec.new do |s|
   s.name             = 'STDevRxExt'
-  s.version          = '0.1.4'
+  s.version          = '0.1.5'
   s.summary          = 'STDevRxExt contains some extension functions for RxSwift and RxCoca which makes our live easy.'
+  s.swift_version = '5.0'
 
   s.description      = <<-DESC
 STDevRxExt contains following 3 type of extensions for RxSwift and RxCocoa:
@@ -18,10 +19,10 @@ STDevRxExt contains following 3 type of extensions for RxSwift and RxCocoa:
   s.source           = { :git => 'https://github.com/stdevteam/STDevRxExt.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.3'
+  s.ios.deployment_target = '11.2'
 
   s.source_files = 'STDevRxExt/Classes/**/*'
 
-  s.dependency 'RxSwift', '~> 4'
-  s.dependency 'RxCocoa', '~> 4'
+  s.dependency 'RxSwift', '~> 5'
+  s.dependency 'RxCocoa', '~> 5'
 end

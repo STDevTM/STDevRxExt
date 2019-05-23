@@ -15,11 +15,11 @@ public enum RxCastError: Error {
 
 public extension ObservableType {
 
-    public func cast<T>(to type: T.Type) -> Observable<T?> {
+    func cast<T>(to type: T.Type) -> Observable<T?> {
         return map { $0 as? T }
     }
 
-    public func forceCast<T>(to type: T.Type) -> Observable<T> {
+    func forceCast<T>(to type: T.Type) -> Observable<T> {
         return flatMap { value in
             Observable.create { observer in
                 if let casted = value as? T {
@@ -37,7 +37,7 @@ public extension ObservableType {
 
 public extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy {
 
-    public func cast<T>(to type: T.Type) -> Driver<T?> {
+    func cast<T>(to type: T.Type) -> Driver<T?> {
         return map { $0 as? T }
     }
 
