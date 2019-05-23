@@ -11,11 +11,11 @@ import RxCocoa
 
 public extension ObservableType {
 
-    public func map<T>(to value: T) -> Observable<T> {
+    func map<T>(to value: T) -> Observable<T> {
         return map { _ in value }
     }
 
-    public func map<T>(at keyPath: KeyPath<E, T>) -> Observable<T> {
+    func map<T>(at keyPath: KeyPath<Element, T>) -> Observable<T> {
         return self.map { $0[keyPath: keyPath] }
     }
 
@@ -23,11 +23,11 @@ public extension ObservableType {
 
 public extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy {
 
-    public func map<T>(to value: T) -> Driver<T> {
+    func map<T>(to value: T) -> Driver<T> {
         return map { _ in value }
     }
 
-    public func map<T>(at keyPath: KeyPath<E, T>) -> Driver<T> {
+    func map<T>(at keyPath: KeyPath<Element, T>) -> Driver<T> {
         return map { $0[keyPath: keyPath] }
     }
 

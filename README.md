@@ -11,9 +11,9 @@ To run the [Example.playground](Example/Example.playground), clone the repo, and
 
 ## Requirements
 
-* iOS 9.3+
-* Swift 4.x
-* Xcode 9+
+* iOS 10.0+
+* Swift 5.0+
+* Xcode 10.2+
 
 ## Installation
 

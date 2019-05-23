@@ -9,36 +9,36 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-public extension ObservableType where E == Bool {
+public extension ObservableType where Element == Bool {
 
-    public func allowTrue() -> Observable<Bool> {
+    func allowTrue() -> Observable<Bool> {
         return filter { $0 }
     }
 
-    public func allowFalse() -> Observable<Bool> {
+    func allowFalse() -> Observable<Bool> {
         return filter { !$0 }
     }
 
 }
 
-public extension ObservableType where E == Bool? {
+public extension ObservableType where Element == Bool? {
 
-    public func allowTrue() -> Observable<Bool> {
+    func allowTrue() -> Observable<Bool> {
         return map { $0 ?? false }
             .allowTrue()
     }
 
-    public func allowTrueOrNil() -> Observable<Bool> {
+    func allowTrueOrNil() -> Observable<Bool> {
         return map { $0 ?? true }
             .allowTrue()
     }
 
-    public func allowFalse() -> Observable<Bool> {
+    func allowFalse() -> Observable<Bool> {
         return map { $0 ?? true }
             .allowFalse()
     }
 
-    public func allowFalseOrNil() -> Observable<Bool> {
+    func allowFalseOrNil() -> Observable<Bool> {
         return map { $0 ?? false }
             .allowFalse()
     }
@@ -47,54 +47,54 @@ public extension ObservableType where E == Bool? {
 
 public extension ObservableType {
 
-    public func filterIfNil(_ param: Optional<Any>) -> Observable<E> {
+    func filterIfNil(_ param: Optional<Any>) -> Observable<Element> {
         return filter { _ in param != nil }
     }
 
-    public func filterIfNotNil(_ param: Optional<Any>) -> Observable<E> {
+    func filterIfNotNil(_ param: Optional<Any>) -> Observable<Element> {
         return filter { _ in param == nil }
     }
 
 }
 
-public extension ObservableType where E == Optional<Any> {
+public extension ObservableType where Element == Optional<Any> {
 
-    public func allowNil() -> Observable<E> {
+    func allowNil() -> Observable<Element> {
         return filter { $0 == nil }
     }
 
 }
 
-public extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy, E == Bool {
+public extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy, Element == Bool {
 
-    public func allowTrue() -> Driver<Bool> {
+    func allowTrue() -> Driver<Bool> {
         return filter { $0 }
     }
 
-    public func allowFalse() -> Driver<Bool> {
+    func allowFalse() -> Driver<Bool> {
         return filter { !$0 }
     }
 
 }
 
-public extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy, E == Bool? {
+public extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy, Element == Bool? {
 
-    public func allowTrue() -> Driver<Bool> {
+    func allowTrue() -> Driver<Bool> {
         return map { $0 ?? false }
             .allowTrue()
     }
 
-    public func allowTrueOrNil() -> Driver<Bool> {
+    func allowTrueOrNil() -> Driver<Bool> {
         return map { $0 ?? true }
             .allowTrue()
     }
 
-    public func allowFalse() -> Driver<Bool> {
+    func allowFalse() -> Driver<Bool> {
         return map { $0 ?? true }
             .allowFalse()
     }
 
-    public func allowFalseOrNil() -> Driver<Bool> {
+    func allowFalseOrNil() -> Driver<Bool> {
         return map { $0 ?? false }
             .allowFalse()
     }
@@ -103,11 +103,11 @@ public extension SharedSequenceConvertibleType where SharingStrategy == DriverSh
 
 public extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy {
 
-    public func filterIfNil(_ param: Optional<Any>) -> Driver<E> {
+    func filterIfNil(_ param: Optional<Any>) -> Driver<Element> {
         return filter { _ in param == nil }
     }
 
-    public func filterIfNotNil(_ param: Optional<Any>) -> Driver<E> {
+    func filterIfNotNil(_ param: Optional<Any>) -> Driver<Element> {
         return filter { _ in param != nil }
     }
 
