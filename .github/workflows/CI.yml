@@ -1,0 +1,29 @@
+name: STDevRxExt
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: macos-10.15
+    env:
+      WORKSPACE: Example/STDevRxExt.xcworkspace
+      DEVELOPER_DIR: /Applications/Xcode_11.app/Contents/Developer
+
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - name: CocoaPods
+      run: |
+        gem install cocoapods
+        pod install --project-directory=Example --repo-update
+        
+    - name: Test iOS
+      run: xcodebuild test -enableCodeCoverage YES -workspace $WORKSPACE -scheme $SCHEME -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO | xcpretty
+      env:
+        SCHEME: STDevRxExt-Example 
+        DESTINATION: 'platform=iOS Simulator,name=iPhone 8,OS=13.0'
