@@ -27,3 +27,6 @@ jobs:
       env:
         SCHEME: STDevRxExt-Example 
         DESTINATION: 'platform=iOS Simulator,name=iPhone 8,OS=13.0'
+        
+    - name: Pod Lib Lint
+      run: pod lib lint --allow-warnings
