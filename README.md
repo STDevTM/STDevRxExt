@@ -1,6 +1,6 @@
 # STDevRxExt
 
-[![CI Status](http://img.shields.io/travis/stdevteam/STDevRxExt.svg?style=flat)](https://travis-ci.org/stdevteam/STDevRxExt)
+[![CI Status](http://img.shields.io/travis/STDevTM/STDevRxExt.svg?style=flat)](https://travis-ci.org/STDevTM/STDevRxExt)
 [![Version](https://img.shields.io/cocoapods/v/STDevRxExt.svg?style=flat)](http://cocoapods.org/pods/STDevRxExt)
 [![License](https://img.shields.io/cocoapods/l/STDevRxExt.svg?style=flat)](http://cocoapods.org/pods/STDevRxExt)
 [![Platform](https://img.shields.io/cocoapods/p/STDevRxExt.svg?style=flat)](http://cocoapods.org/pods/STDevRxExt)
@@ -13,7 +13,7 @@ To run the [Example.playground](Example/Example.playground), clone the repo, and
 
 * iOS 10.0+
 * Swift 5.0+
-* Xcode 10.2+
+* Xcode 11+
 
 ## Installation
 
@@ -237,7 +237,7 @@ Tigran Hambardzumyan, tigran@stdevmail.com
 
 ## Support
 
-Feel free to [open issuses](https://github.com/stdevteam/STDevRxExt/issues/new) with any suggestions, bug reports, feature requests, questions.
+Feel free to [open issues](https://github.com/STDevTM/STDevRxExt/issues/new) with any suggestions, bug reports, feature requests, questions.
 
 ## Let us know!
 

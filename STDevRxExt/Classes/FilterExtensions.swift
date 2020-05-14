@@ -5,12 +5,12 @@
 //  Created by Tigran Hambardzumyan on 3/28/18.
 //
 
-import Foundation
-import RxSwift
 import RxCocoa
+import RxSwift
+
+// MARK: - Observable
 
 public extension ObservableType where Element == Bool {
-
     func allowTrue() -> Observable<Bool> {
         return filter { $0 }
     }
@@ -18,11 +18,9 @@ public extension ObservableType where Element == Bool {
     func allowFalse() -> Observable<Bool> {
         return filter { !$0 }
     }
-
 }
 
 public extension ObservableType where Element == Bool? {
-
     func allowTrue() -> Observable<Bool> {
         return map { $0 ?? false }
             .allowTrue()
@@ -42,31 +40,27 @@ public extension ObservableType where Element == Bool? {
         return map { $0 ?? false }
             .allowFalse()
     }
-
 }
 
 public extension ObservableType {
-
-    func filterIfNil(_ param: Optional<Any>) -> Observable<Element> {
+    func filterIfNil(_ param: Any?) -> Observable<Element> {
         return filter { _ in param != nil }
     }
 
-    func filterIfNotNil(_ param: Optional<Any>) -> Observable<Element> {
+    func filterIfNotNil(_ param: Any?) -> Observable<Element> {
         return filter { _ in param == nil }
     }
-
 }
 
-public extension ObservableType where Element == Optional<Any> {
-
+public extension ObservableType where Element == Any? {
     func allowNil() -> Observable<Element> {
         return filter { $0 == nil }
     }
-
 }
 
-public extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy, Element == Bool {
+// MARK: - Driver
 
+public extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy, Element == Bool {
     func allowTrue() -> Driver<Bool> {
         return filter { $0 }
     }
@@ -74,11 +68,9 @@ public extension SharedSequenceConvertibleType where SharingStrategy == DriverSh
     func allowFalse() -> Driver<Bool> {
         return filter { !$0 }
     }
-
 }
 
 public extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy, Element == Bool? {
-
     func allowTrue() -> Driver<Bool> {
         return map { $0 ?? false }
             .allowTrue()
@@ -98,17 +90,114 @@ public extension SharedSequenceConvertibleType where SharingStrategy == DriverSh
         return map { $0 ?? false }
             .allowFalse()
     }
-
 }
 
 public extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy {
-
-    func filterIfNil(_ param: Optional<Any>) -> Driver<Element> {
+    func filterIfNil(_ param: Any?) -> Driver<Element> {
         return filter { _ in param == nil }
     }
 
-    func filterIfNotNil(_ param: Optional<Any>) -> Driver<Element> {
+    func filterIfNotNil(_ param: Any?) -> Driver<Element> {
+        return filter { _ in param != nil }
+    }
+}
+
+// MARK: - Single
+
+public extension PrimitiveSequenceType where Trait == SingleTrait, Element == Bool {
+    func allowTrue() -> Maybe<Bool> {
+        return filter { $0 }
+    }
+
+    func allowFalse() -> Maybe<Bool> {
+        return filter { !$0 }
+    }
+}
+
+public extension PrimitiveSequenceType where Trait == SingleTrait, Element == Bool? {
+    func allowTrue() -> Maybe<Bool> {
+        return map { $0 ?? false }
+            .allowTrue()
+    }
+
+    func allowTrueOrNil() -> Maybe<Bool> {
+        return map { $0 ?? true }
+            .allowTrue()
+    }
+
+    func allowFalse() -> Maybe<Bool> {
+        return map { $0 ?? true }
+            .allowFalse()
+    }
+
+    func allowFalseOrNil() -> Maybe<Bool> {
+        return map { $0 ?? false }
+            .allowFalse()
+    }
+}
+
+public extension PrimitiveSequenceType where Trait == SingleTrait {
+    func filterIfNil(_ param: Any?) -> Maybe<Element> {
         return filter { _ in param != nil }
     }
 
+    func filterIfNotNil(_ param: Any?) -> Maybe<Element> {
+        return filter { _ in param == nil }
+    }
+}
+
+public extension PrimitiveSequenceType where Trait == SingleTrait, Element == Any? {
+    func allowNil() -> Maybe<Element> {
+        return filter { $0 == nil }
+    }
+}
+
+// MARK: - Maybe
+
+public extension PrimitiveSequenceType where Trait == MaybeTrait, Element == Bool {
+    func allowTrue() -> Maybe<Bool> {
+        return filter { $0 }
+    }
+
+    func allowFalse() -> Maybe<Bool> {
+        return filter { !$0 }
+    }
+}
+
+public extension PrimitiveSequenceType where Trait == MaybeTrait, Element == Bool? {
+    func allowTrue() -> Maybe<Bool> {
+        return map { $0 ?? false }
+            .allowTrue()
+    }
+
+    func allowTrueOrNil() -> Maybe<Bool> {
+        return map { $0 ?? true }
+            .allowTrue()
+    }
+
+    func allowFalse() -> Maybe<Bool> {
+        return map { $0 ?? true }
+            .allowFalse()
+    }
+
+    func allowFalseOrNil() -> Maybe<Bool> {
+        return map { $0 ?? false }
+            .allowFalse()
+    }
+}
+
+public extension PrimitiveSequenceType where Trait == MaybeTrait {
+    func filterIfNil(_ param: Any?) -> Maybe<Element> {
+        return filter { _ in param != nil }
+    }
+
+    func filterIfNotNil(_ param: Any?) -> Maybe<Element> {
+        return filter { _ in param == nil }
+    }
+}
+
+public extension PrimitiveSequenceType where Trait == MaybeTrait, Element == Any? {
+    func allowNil() -> Maybe<Element> {
+        return filter { $0 == nil }
+    }
 }
