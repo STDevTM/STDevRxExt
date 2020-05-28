@@ -1,6 +1,6 @@
 # STDevRxExt
 
-[![CI Status](http://img.shields.io/travis/STDevTM/STDevRxExt.svg?style=flat)](https://travis-ci.org/STDevTM/STDevRxExt)
+[![CI Status](https://github.com/STDevTM/STDevRxExt/workflows/STDevRxExt/badge.svg?branch=master)](https://github.com/STDevTM/STDevRxExt/actions)
 [![Version](https://img.shields.io/cocoapods/v/STDevRxExt.svg?style=flat)](http://cocoapods.org/pods/STDevRxExt)
 [![License](https://img.shields.io/cocoapods/l/STDevRxExt.svg?style=flat)](http://cocoapods.org/pods/STDevRxExt)
 [![Platform](https://img.shields.io/cocoapods/p/STDevRxExt.svg?style=flat)](http://cocoapods.org/pods/STDevRxExt)
