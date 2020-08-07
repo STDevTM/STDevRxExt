@@ -20,24 +20,20 @@ public extension ObservableType {
     }
 
     func forceCast<T>(to type: T.Type) -> Observable<T> {
-        return flatMap { value in
-            Observable.create { observer in
-                if let casted = value as? T {
-                    observer.onNext(casted)
-                    observer.onCompleted()
-                } else {
-                    observer.onError(RxCastError.castFailed)
-                }
-                return Disposables.create()
+        return map { value in
+            if let casted = value as? T {
+                return casted
+            } else {
+                throw RxCastError.castFailed
             }
         }
     }
 }
 
-// MARK: - Driver
+// MARK: - SharedSequence
 
-public extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy {
-    func cast<T>(to type: T.Type) -> Driver<T?> {
+public extension SharedSequenceConvertibleType {
+    func cast<T>(to type: T.Type) -> SharedSequence<SharingStrategy, T?> {
         return map { $0 as? T }
     }
 }

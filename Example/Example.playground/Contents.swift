@@ -8,57 +8,49 @@
  ----
  */
 
-import UIKit
-import STDevRxExt
-import RxSwift
 import RxCocoa
+import RxSwift
+import STDevRxExt
+import UIKit
 
 /*:
  ## Filter Extensions
-*/
+ */
 
 example("allowTrue") {
-
     let disposeBag = DisposeBag()
 
     Observable.of(true, false, false, true, true)
         .allowTrue()
         .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
-
 }
 
 example("allowTrue Optional") {
-
     let disposeBag = DisposeBag()
 
     Observable.of(true, false, nil, true, nil, true)
         .allowTrue()
         .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
-
 }
 
 example("allowFalse") {
-
     let disposeBag = DisposeBag()
 
     Observable.of(true, false, false, true, false)
         .allowFalse()
         .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
-
 }
 
 example("allowFalse Optional") {
-
     let disposeBag = DisposeBag()
 
     Observable.of(true, false, nil, true, nil, true, false)
         .allowFalse()
         .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
-
 }
 
 example("allowTrueOrNil") {
@@ -68,7 +60,6 @@ example("allowTrueOrNil") {
         .allowTrueOrNil()
         .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
-
 }
 
 example("allowFalseOrNil") {
@@ -78,57 +69,6 @@ example("allowFalseOrNil") {
         .allowFalseOrNil()
         .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
-
-}
-
-example("filterIfNil") {
-
-    let disposeBag = DisposeBag()
-
-    var optional: String? = nil
-
-    let subject = PublishSubject<String>()
-
-    subject
-        .filterIfNil(optional)
-        .subscribe(onNext: { dump($0, name: "Subscription1") })
-        .disposed(by: disposeBag)
-
-    optional = "enable"
-
-    subject
-        .filterIfNil(optional)
-        .subscribe(onNext: { dump($0, name: "Subscription2") })
-        .disposed(by: disposeBag)
-
-    subject.onNext("🐹")
-
-    subject.onNext("🐭")
-}
-
-example("filterIfNotNil") {
-
-    let disposeBag = DisposeBag()
-
-    var optional: String? = nil
-
-    let subject = PublishSubject<String>()
-
-    subject
-        .filterIfNotNil(optional)
-        .subscribe(onNext: { dump($0, name: "Subscription1") })
-        .disposed(by: disposeBag)
-
-    optional = "enable"
-
-    subject
-        .filterIfNotNil(optional)
-        .subscribe(onNext: { dump($0, name: "Subscription2") })
-        .disposed(by: disposeBag)
-
-    subject.onNext("🐹")
-
-    subject.onNext("🐭")
 }
 
 example("Allow nil") {
@@ -142,28 +82,25 @@ example("Allow nil") {
 
 /*:
  ## Map Extensions
-*/
+ */
 
 example("map(to:)") {
-
     let disposeBag = DisposeBag()
 
     Observable.of(1, 5, 7, 8)
         .map(to: "ping")
         .subscribe(onNext: { dump($0 as String) })
         .disposed(by: disposeBag)
-
 }
 
 example("map(at:)") {
+    let disposeBag = DisposeBag()
 
-   let disposeBag = DisposeBag()
-
-   let observable = Observable.of(
-            Book(title: "Twenty Thousand Leagues Under the Sea", author: Author("Jules", "Verne")),
-            Book(title: "Hamlet", author: Author("William", "Shakespeare")),
-            Book(title: "Hearts of Three", author: Author("Jack", "London"))
-        )
+    let observable = Observable.of(
+        Book(title: "Twenty Thousand Leagues Under the Sea", author: Author("Jules", "Verne")),
+        Book(title: "Hamlet", author: Author("William", "Shakespeare")),
+        Book(title: "Hearts of Three", author: Author("Jack", "London"))
+    )
 
     observable
         .map(at: \.title)
@@ -174,12 +111,10 @@ example("map(at:)") {
         .map(at: \.author.firstName)
         .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
-
 }
-
 /*:
  ## Cast Extensions
-*/
+ */
 
 example("cast(to:)") {
     let disposeBag = DisposeBag()
@@ -188,7 +123,6 @@ example("cast(to:)") {
         .cast(to: String.self)
         .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
-
 }
 
 example("forceCast(to:)") {
@@ -198,7 +132,6 @@ example("forceCast(to:)") {
         .forceCast(to: String.self)
         .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
-
 }
 
 /*:
@@ -218,6 +151,4 @@ example("update(_:with:)") {
         .update(subject, with: true)
         .subscribe(onNext: { dump($0) })
         .disposed(by: disposeBag)
-
-
 }

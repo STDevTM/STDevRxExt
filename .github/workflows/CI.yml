@@ -7,26 +7,75 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  MacOS:
+    name: macOS
     runs-on: macos-10.15
     env:
-      WORKSPACE: Example/STDevRxExt.xcworkspace
-      DEVELOPER_DIR: /Applications/Xcode_11.app/Contents/Developer
+      PROJECT: STDevRxExt.xcodeproj
+      SCHEME: STDevRxExt-Package
+      DEVELOPER_DIR: /Applications/Xcode_11.5.app/Contents/Developer
 
     steps:
-
     - uses: actions/checkout@v2
-
+      
+    - name: Bundle Install
+      run: bundle install
+      
     - name: CocoaPods
       run: |
         gem install cocoapods
         pod install --project-directory=Example --repo-update
-        
+
+    - name: Restore SPM Cache
+      uses: actions/cache@v1
+      with:
+        path: .build
+        key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+        restore-keys: |
+          ${{ runner.os }}-spm-
+
+    - name: Build and test (SPM)
+      run: |
+        swift build
+        swift test
+
+    - name: Generate Xcodeproj
+      run: |
+        swift package generate-xcodeproj
+
     - name: Test iOS
-      run: xcodebuild test -enableCodeCoverage YES -workspace $WORKSPACE -scheme $SCHEME -destination "$DESTINATION" ONLY_ACTIVE_ARCH=NO | xcpretty
+      run: |
+        xcodebuild clean build test -project $PROJECT -scheme $SCHEME -destination "$DESTINATION" | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild-ios.json" xcpretty -f `xcpretty-json-formatter`
       env:
-        SCHEME: STDevRxExt-Example 
-        DESTINATION: 'platform=iOS Simulator,name=iPhone 8,OS=13.0'
-        
-    - name: Pod Lib Lint
-      run: pod lib lint --allow-warnings
+          DESTINATION: platform=iOS Simulator,name=iPhone 11
+
+    - name: Test MacOS
+      run: |
+        xcodebuild clean build test -project $PROJECT -scheme $SCHEME -destination "$DESTINATION" | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild-macos.json" xcpretty -f `xcpretty-json-formatter`
+      env:
+          DESTINATION: platform=OS X
+
+    - name: Test TVOS
+      run: |
+        xcodebuild clean build test -project $PROJECT -scheme $SCHEME -destination "$DESTINATION" | XCPRETTY_JSON_FILE_OUTPUT="xcodebuild-tvos.json" xcpretty -f `xcpretty-json-formatter`
+      env:
+          DESTINATION: platform=tvOS Simulator,name=Apple TV 4K (at 1080p)
+
+    - name: Build WatchOS
+      run: xcodebuild clean build -project $PROJECT -scheme $SCHEME -destination "$DESTINATION"
+      env:
+          DESTINATION: name=Apple Watch Series 5 - 40mm
+
+  CocoaPods:
+    name: CocoaPods
+    runs-on: macos-10.15
+    strategy:
+      matrix:
+        platform: ['ios', 'macos', 'tvos', 'watchos']
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_11.5.app/Contents/Developer
+    steps:
+    - uses: actions/checkout@v1
+      
+    - name: CocoaPods ${{ matrix.platform }}
+      run: pod lib lint --skip-tests --allow-warnings --verbose --platforms=${{ matrix.platform }} 
