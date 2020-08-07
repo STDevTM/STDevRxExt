@@ -11,18 +11,50 @@ To run the [Example.playground](Example/Example.playground), clone the repo, and
 
 ## Requirements
 
-* iOS 10.0+
+* iOS 8.0+
+* tvOS 9.0+
+* macOS 10.10+
+* watchOS 3.0+
 * Swift 5.0+
 * Xcode 11+
 
 ## Installation
 
-STDevRxExt is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+<details>
+<summary>CocoaPods</summary>
+</br>
+<p>STDevRxExt is available through <a href="http://cocoapods.org">CocoaPods</a>. To install it, simply add the following line to your <code>Podfile</code>:</p>
 
-```ruby
-pod 'STDevRxExt'
-```
+<pre><code class="ruby language-ruby">pod 'STDevRxExt'</code></pre>
+</details>
+
+<details>
+<summary>Swift Package Manager</summary>
+</br>
+<p>You can use <a href="https://swift.org/package-manager">The Swift Package Manager</a> to install <code>STDevRxExt</code> by adding the proper description to your <code>Package.swift</code> file:</p>
+
+<pre><code class="swift language-swift">import PackageDescription
+
+let package = Package(
+    name: "YOUR_PROJECT_NAME",
+    targets: [],
+    dependencies: [
+        .package(url: "https://github.com/STDevTM/STDevRxExt.git", from: "1.0.0")
+    ]
+)
+</code></pre>
+
+<p>Next, add <code>STDevRxExt</code> to your targets dependencies like so:</p>
+<pre><code class="swift language-swift">.target(
+    name: "YOUR_TARGET_NAME",
+    dependencies: [
+        "STDevRxExt",
+    ]
+),</code></pre>
+<p>Then run <code>swift package update</code>.</p>
+
+</details>
+
 
 ## List of All Extensions
 

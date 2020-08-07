@@ -20,14 +20,14 @@ public extension ObservableType {
     }
 }
 
-// MARK: - Driver
+// MARK: - SharedSequence
 
-public extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy {
-    func map<T>(to value: T) -> Driver<T> {
+public extension SharedSequenceConvertibleType {
+    func map<T>(to value: T) -> SharedSequence<SharingStrategy, T> {
         return map { _ in value }
     }
 
-    func map<T>(at keyPath: KeyPath<Element, T>) -> Driver<T> {
+    func map<T>(at keyPath: KeyPath<Element, T>) -> SharedSequence<SharingStrategy, T> {
         return map { $0[keyPath: keyPath] }
     }
 }

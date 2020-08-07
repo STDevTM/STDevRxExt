@@ -18,10 +18,10 @@ public extension ObservableType {
     }
 }
 
-// MARK: - Driver
+// MARK: - SharedSequence
 
-public extension SharedSequenceConvertibleType where SharingStrategy == DriverSharingStrategy {
-    func update<T: ObserverType>(_ observer: T, with value: T.Element) -> SharedSequence<DriverSharingStrategy, Self.Element> {
+public extension SharedSequenceConvertibleType {
+    func update<T: ObserverType>(_ observer: T, with value: T.Element) -> SharedSequence<SharingStrategy, Self.Element> {
         return self.do(onNext: { [observer] _ in
             observer.onNext(value)
         })
