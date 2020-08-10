@@ -41,7 +41,7 @@ jobs:
 
     - name: Generate Xcodeproj
       run: |
-        swift package generate-xcodeproj
+        swift package generate-xcodeproj --enable-code-coverage
 
     - name: Test iOS
       run: |
