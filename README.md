@@ -1,9 +1,11 @@
 # STDevRxExt
 
 [![CI Status](https://github.com/STDevTM/STDevRxExt/workflows/STDevRxExt/badge.svg?branch=master)](https://github.com/STDevTM/STDevRxExt/actions)
-[![Version](https://img.shields.io/cocoapods/v/STDevRxExt.svg?style=flat)](http://cocoapods.org/pods/STDevRxExt)
-[![License](https://img.shields.io/cocoapods/l/STDevRxExt.svg?style=flat)](http://cocoapods.org/pods/STDevRxExt)
 [![Platform](https://img.shields.io/cocoapods/p/STDevRxExt.svg?style=flat)](http://cocoapods.org/pods/STDevRxExt)
+[![Cocoapods](https://img.shields.io/cocoapods/v/STDevRxExt.svg?style=flat)](http://cocoapods.org/pods/STDevRxExt)
+[![SPM compatible](https://img.shields.io/badge/SPM-Compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager/)
+[![codecov](https://codecov.io/gh/STDevTM/STDevRxExt/branch/master/graph/badge.svg)](https://codecov.io/gh/STDevTM/STDevRxExt)
+[![License](https://img.shields.io/cocoapods/l/STDevRxExt.svg?style=flat)](http://cocoapods.org/pods/STDevRxExt)
 
 ## Example
 

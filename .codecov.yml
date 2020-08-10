@@ -1,0 +1,15 @@
+codecov:
+  token: 5eec41a2-008d-45e0-873a-21ea3c9c6c3c
+
+coverage:
+  precision: 2
+  round: down
+  range: 70...100
+
+  status:
+    project: true
+    patch: true
+    changes: true
+
+  ignore:
+    - "Tests/**/*"
