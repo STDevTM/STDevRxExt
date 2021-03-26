@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "STDevRxExt",
     platforms: [
-        .macOS(.v10_10), .iOS(.v8), .tvOS(.v9), .watchOS(.v3),
+        .macOS(.v10_10), .iOS(.v9), .tvOS(.v9), .watchOS(.v3),
     ],
     products: [
         .library(
@@ -14,7 +14,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "5.1.0")),
+        .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.0.0")),
     ],
     targets: [
         .target(

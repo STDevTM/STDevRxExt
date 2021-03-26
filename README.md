@@ -13,7 +13,7 @@ To run the [Example.playground](Example/Example.playground), clone the repo, and
 
 ## Requirements
 
-* iOS 8.0+
+* iOS 9.0+
 * tvOS 9.0+
 * macOS 10.10+
 * watchOS 3.0+
